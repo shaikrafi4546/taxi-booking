@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: taxi-bookingdeployment
+spec:
+ replicas: 2
+ selector:
+  matchLabels:
+   app: taxi-booking
+ template:
+   metadata:
+    name: taxi-bookingpod
+    labels:
+     app: taxi-bookingapp
+   spec:
+     containers:
+     - name: taxi-bookingconatiner
+       image: venna/taxi-booking
+       imagePullPolicy: Always
+       ports:
+       - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: taxi-bookingsvc
+spec:
+ type: LoadBalancer
+ selector:
+  app: taxi-booking
+ ports:
+  - port: 80
+    targetPort: 8080
+...
