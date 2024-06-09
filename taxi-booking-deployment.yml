@@ -16,7 +16,7 @@ spec:
    spec:
      containers:
      - name: taxi-bookingconatiner
-       image: venna/taxi-booking
+       image: venna12/taxi-booking
        imagePullPolicy: Always
        ports:
        - containerPort: 8080
